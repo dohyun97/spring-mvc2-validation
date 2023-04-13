@@ -157,6 +157,11 @@ public class ValidationItemControllerV2 {
 
     @PostMapping("/add")
     public String addItemV4(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+       //타입 오류와 아래 오류들이 같이 있을 때 타입 오류메세지만 한줄로 보이게 할려고
+        if(bindingResult.hasErrors()){
+            log.info("errors = {}",bindingResult);
+            return "validation/v2/addForm";
+        }
 
         //검증 로직
         if(!StringUtils.hasText(item.getItemName())){
