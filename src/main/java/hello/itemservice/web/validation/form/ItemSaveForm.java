@@ -7,13 +7,13 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 @Data
 public class ItemSaveForm  {
-   @NotNull
+   @NotNull(message = "Please type item name")
     private String itemName;
-   @NotNull
-   @Range(min = 1000,max = 1000000)
+   @NotNull(message = "Please type price")
+   @Range(min = 1000,max = 1000000,message = "Price should be higher than 1000 and Lower than 1000000")
     private Integer price;
 
-   @NotNull
-   @Max(value=9999)
+   @NotNull(message = "please type quantity")
+   @Max(value=9999,message = "Quantity should be not over 9999")
     private Integer quantity;
 }
